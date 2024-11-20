@@ -17,7 +17,7 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 COPY . /var/www
 
 # 作業ディレクトリをLaravelのルートに設定
-WORKDIR /var/www/docker_php_test
+WORKDIR /var/www/eaticle_web_server
 
 # Composerの依存関係をインストール
 RUN composer install --no-dev --optimize-autoloader
@@ -29,7 +29,7 @@ RUN npm install
 RUN npm run build
 
 # 権限の設定
-RUN chown -R www-data:www-data /var/www/docker_php_test/storage /var/www/docker_php_test/bootstrap/cache
+RUN chown -R www-data:www-data /var/www/eaticle_web_server/storage /var/www/eaticle_web_server/bootstrap/cache
 
 # NginxとPHP-FPMを起動するスクリプトをコピー
 COPY ./start.sh /usr/local/bin/start.sh
