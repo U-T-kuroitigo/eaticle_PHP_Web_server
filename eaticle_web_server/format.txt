@@ -1,0 +1,8 @@
+コミット前に行うこと！
+
+
+全てのフォーマット
+npx prettier --write .
+
+phpの高度なフォーマット
+php ./vendor/bin/php-cs-fixer fix
