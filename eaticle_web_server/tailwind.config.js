@@ -13,8 +13,15 @@ export default {
 		extend: {
 			fontFamily: {
 				sans: ["Figtree", ...defaultTheme.fontFamily.sans],
+				tattoo: ["'Miltonian Tattoo'", "cursive"], // Miltonian Tattoo を追加
+			},
+			colors: {
+				"custom-orange": "#F8884D", // カスタム背景色
 			},
 		},
 	},
-	plugins: [],
+	plugins: [
+		require("@tailwindcss/line-clamp"),
+		require("@tailwindcss/aspect-ratio"),
+	],
 };

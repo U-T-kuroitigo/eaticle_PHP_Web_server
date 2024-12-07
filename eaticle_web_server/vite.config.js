@@ -7,7 +7,8 @@ export default defineConfig({
 			input: [
 				"resources/css/app.css",
 				"resources/js/app.js",
-				"resources/js/articleList.js", // 追加したJavaScriptファイル
+				"resources/js/articleList.js",
+				"resources/js/loginModal.js",
 			],
 			refresh: true,
 		}),
