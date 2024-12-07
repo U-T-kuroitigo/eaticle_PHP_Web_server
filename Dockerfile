@@ -3,7 +3,7 @@ FROM php:8.2-fpm
 
 # Node.jsをインストール（Viteのビルドに必要）
 RUN curl -fsSL https://deb.nodesource.com/setup_16.x | bash - \
-    && apt-get install -y nodejs
+	&& apt-get install -y nodejs
 
 # 必要なパッケージをインストール
 RUN apt-get update && apt-get install -y \

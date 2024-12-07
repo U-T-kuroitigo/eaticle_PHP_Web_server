@@ -1,0 +1,18 @@
+root = true
+
+[*] # すべてのファイルに適用
+charset = utf-8
+end_of_line = lf
+indent_size = 2
+indent_style = tab # インデントはタブ
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+[*.md] # Markdown ファイルは特別扱い
+trim_trailing_whitespace = false
+
+[*.{yml,yaml}] # YAMLファイルの設定（必要なら追加）
+indent_size = 2
+
+[docker-compose.yml] # Docker Compose の特別な扱い
+indent_size = 2
