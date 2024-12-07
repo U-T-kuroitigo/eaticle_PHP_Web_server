@@ -15,7 +15,6 @@
 </head>
 
 <body>
-
   <!-- ヘッダー -->
   @include('components.main-header', [
       'isLoggedIn' => true,
@@ -24,25 +23,26 @@
       'userName' => '仮のアカウント名', // 仮置きユーザーネーム
   ])
 
-  {{-- @include('components.main-header', [
-			'isLoggedIn' => true,
-			'userImg' => asset('images/templates/user_icon.png'), // 仮置きユーザーアイコン
-			'isMyPage' => true,
-			'userName' => '仮のアカウント名', // 仮置きユーザーネーム
-	]) --}}
-
+  {{--
+    @include('components.main-header', [
+    'isLoggedIn' => true,
+    'userImg' => asset('images/templates/user_icon.png'), // 仮置きユーザーアイコン
+    'isMyPage' => true,
+    'userName' => '仮のアカウント名', // 仮置きユーザーネーム
+    ])
+  --}}
 
   {{-- @include('components.main-header', ['isLoggedIn' => false]) --}}
 
-  {{-- 'userImg' => asset('images/templates/user_icon.png'), // TODO: セッションからユーザー情報を取得する
-	'userName' => '仮のアカウント名', // TODO: セッションからユーザー情報を取得する
+  {{--
+    'userImg' => asset('images/templates/user_icon.png'), // TODO: セッションからユーザー情報を取得する
+    'userName' => '仮のアカウント名', // TODO: セッションからユーザー情報を取得する
 
-	'userImg' => session('userImg', asset('images/templates/user_icon.png')),
-	'userName' => session('userName', 'デフォルトのアカウント名'), --}}
-
+    'userImg' => session('userImg', asset('images/templates/user_icon.png')),
+    'userName' => session('userName', 'デフォルトのアカウント名'),
+  --}}
 
   <div class="container mx-auto">
-
     <div class="container mx-auto px-4 lg:px-16">
       <!-- 検索とソート -->
       <div class="my-4 flex flex-col items-center justify-between gap-4 md:flex-row">
@@ -106,16 +106,13 @@
       </div>
     </div>
 
-
-
-
     <!-- ローディング表示 -->
     <div id="loading-indicator" class="hidden py-4 text-center">
       読み込み中...
     </div>
   </div>
   <script>
-    const externalApiUrl = "{{ env('EXTERNAL_API_URL') }}";
+    const externalApiUrl = '{{ env('EXTERNAL_API_URL') }}';
   </script>
 </body>
 

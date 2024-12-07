@@ -19,7 +19,7 @@
         <div class="relative">
           <!-- ユーザーアイコン -->
           <button id="user-icon-button" class="flex items-center">
-            <img src="{{ $userImg }}" alt="User Icon" class="h-10 w-10 rounded-full">
+            <img src="{{ $userImg }}" alt="User Icon" class="h-10 w-10 rounded-full" />
           </button>
 
           <!-- ドロップダウンメニュー -->
@@ -37,7 +37,7 @@
           <div class="relative">
             <!-- ユーザーアイコン -->
             <button id="user-icon-button" class="flex items-center">
-              <img src="{{ $userImg }}" alt="User Icon" class="h-10 w-10 rounded-full">
+              <img src="{{ $userImg }}" alt="User Icon" class="h-10 w-10 rounded-full" />
             </button>
 
             <!-- ドロップダウンメニュー -->
