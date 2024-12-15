@@ -3,3 +3,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.editor-preview,
+.editor-preview-side {
+	all: unset;
+}
+
+.editor-preview *,
+.editor-preview-side * {
+	all: revert;
+}

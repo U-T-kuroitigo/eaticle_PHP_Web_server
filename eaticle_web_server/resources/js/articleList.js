@@ -65,7 +65,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		articleItem.className = "relative block";
 		articleItem.innerHTML = `
     <!-- サムネイル画像とタイトル -->
-    <a href="/article/detail/${article.article_id}" class="group block">
+    <a href="/article/${article.article_id}/detail" class="group block">
       <div class="aspect-h-9 aspect-w-16 relative overflow-hidden bg-gray-200">
         <img src="${article.article_thumbnail_path || "/images/templates/no_image.png"}"
              alt="Thumbnail"
