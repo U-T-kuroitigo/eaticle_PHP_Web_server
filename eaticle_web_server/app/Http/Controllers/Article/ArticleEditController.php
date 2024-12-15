@@ -75,7 +75,6 @@ class ArticleEditController extends Controller
 		if ($request->session()->token() !== $request->header('X-CSRF-TOKEN')) {
 			return response()->json(['error' => 'CSRF token mismatch.'], 419);
 		}
-		Log::info('保存リクエストデータ:', $request->all());
 
 		try {
 			// 入力データのバリデーション

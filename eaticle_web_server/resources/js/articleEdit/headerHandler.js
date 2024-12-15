@@ -59,12 +59,6 @@ function sendSaveRequest(articleId, isPublic, tempImages) {
 		fileName: img.fileName,
 	}));
 
-	// デバッグ用のデータ出力
-	console.log("Title:", title);
-	console.log("Tags:", tags);
-	console.log("Body:", body);
-	console.log("Temp Images:", tempImages);
-
 	// バリデーションチェック
 	if (!title) {
 		alert("記事タイトルを入力してください。");
@@ -96,11 +90,6 @@ function sendSaveRequest(articleId, isPublic, tempImages) {
 		formData.append(`temp_images[${index}]`, image.file); // 各画像ファイルを添付
 	});
 
-	// デバッグ用にFormDataの内容を出力
-	formData.forEach((value, key) => {
-		console.log(`${key}:`, value);
-	});
-
 	const uploadUrl = "/article/save"; // 保存先のURL
 	const csrfTokenMeta = document.querySelector('meta[name="csrf-token"]'); // CSRFトークンを取得
 	if (!csrfTokenMeta) {
@@ -112,7 +101,6 @@ function sendSaveRequest(articleId, isPublic, tempImages) {
 	}
 
 	const csrfToken = csrfTokenMeta.getAttribute("content"); // トークンの内容を取得
-	console.log("CSRF Token: ", csrfToken);
 
 	// 保存リクエストの送信
 	fetch(uploadUrl, {
@@ -136,7 +124,6 @@ function sendSaveRequest(articleId, isPublic, tempImages) {
 			return response.json();
 		})
 		.then((data) => {
-			console.log("保存成功:", data);
 			alert("記事が保存されました。");
 		})
 		.catch((error) => {
