@@ -92,7 +92,6 @@ function handleImageUpload(file, tempImages, onSuccess, onError) {
 	try {
 		const tempUrl = URL.createObjectURL(file); // 一時URL生成
 		tempImages.push({ file, tempUrl, fileName: file.name }); // ファイル名も保存
-		console.log("Temp Image Added:", { file, tempUrl, fileName: file.name });
 		onSuccess(tempUrl); // 仮URLを返す
 	} catch (error) {
 		onError("画像の一時保存に失敗しました。");
