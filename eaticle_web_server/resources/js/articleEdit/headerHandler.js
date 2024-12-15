@@ -13,8 +13,7 @@ export function initializeHeader() {
 	const savePublicButton = document.getElementById("save-public-button"); // 公開保存ボタン
 	let tempImages = getTempImages(); // 一時保存画像を取得
 
-	// 記事 ID を URL から取得
-	const articleId = getArticleIdFromUrl();
+	initializeCloseHandler(isNewArticle, articleId, tempImages);
 
 	// 非公開保存ボタンのクリックイベントを設定
 	if (savePrivateButton) {
@@ -131,4 +130,50 @@ function sendSaveRequest(articleId, isPublic, tempImages) {
 			console.error("保存エラー:", error);
 			alert("保存に失敗しました。");
 		});
+}
+
+function initializeCloseHandler(isNewArticle, articleId, tempImages) {
+	const closeButton = document.getElementById("close-button");
+	const modal = document.getElementById("close-modal");
+	const cancelModalButton = document.getElementById("cancel-modal-button");
+	const saveDraftButton = document.getElementById("save-draft-button"); // クラスに変更
+	const confirmCloseButton = document.getElementById("confirm-close-button");
+
+	// 必要な要素が存在するか確認
+	if (
+		!closeButton ||
+		!modal ||
+		!cancelModalButton ||
+		!saveDraftButton ||
+		!confirmCloseButton
+	) {
+		console.warn("モーダルの要素が見つかりません");
+		return;
+	}
+
+	// 閉じるボタンでモーダル表示
+	closeButton.addEventListener("click", () => {
+		modal.classList.remove("hidden");
+	});
+
+	// キャンセルボタンでモーダル非表示
+	cancelModalButton.addEventListener("click", () => {
+		modal.classList.add("hidden");
+	});
+
+	// 下書き保存ボタンの処理
+	saveDraftButton.addEventListener("click", () => {
+		sendSaveRequest(articleId, false, tempImages); // 非公開保存
+		modal.classList.add("hidden");
+	});
+
+	// 閉じる確認ボタンの処理
+	confirmCloseButton.addEventListener("click", () => {
+		modal.classList.add("hidden");
+		// ページ遷移処理
+		const redirectUrl = isNewArticle
+			? "/article/list"
+			: `/article/${articleId}/detail`;
+		window.location.href = redirectUrl;
+	});
 }
