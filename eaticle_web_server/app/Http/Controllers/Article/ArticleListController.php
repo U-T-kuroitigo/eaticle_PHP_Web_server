@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Article;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
+use App\Http\Controllers\Controller;
 
 class ArticleListController extends Controller
 {
@@ -43,6 +44,7 @@ class ArticleListController extends Controller
 	// ビューの表示
 	public function index(Request $request)
 	{
+		alertErrorMessage($request);
 		// 内部APIを使用してデータを取得
 		$data = $this->getArticles($request);
 

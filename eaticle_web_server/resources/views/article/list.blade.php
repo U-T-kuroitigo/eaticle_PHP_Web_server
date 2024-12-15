@@ -17,30 +17,11 @@
 <body>
   <!-- ヘッダー -->
   @include('components.main-header', [
-      'isLoggedIn' => true,
-      'userImg' => asset('images/templates/user_icon.png'), // 仮置きユーザーアイコン
-      'isMyPage' => false,
-      'userName' => '仮のアカウント名', // 仮置きユーザーネーム
+      'isLoggedIn' => session()->has('user_id'),
+      'userImg' => session()->has('user_id') ? asset('images/templates/user_icon.png') : null, // 仮置きのユーザーアイコン
+      'isMyPage' => false, // 必要に応じて動的に設定可能
+      'userName' => session()->has('user_id') ? '仮のアカウント名' : null, // 仮置きのユーザーネーム
   ])
-
-  {{--
-    @include('components.main-header', [
-    'isLoggedIn' => true,
-    'userImg' => asset('images/templates/user_icon.png'), // 仮置きユーザーアイコン
-    'isMyPage' => true,
-    'userName' => '仮のアカウント名', // 仮置きユーザーネーム
-    ])
-  --}}
-
-  {{-- @include('components.main-header', ['isLoggedIn' => false]) --}}
-
-  {{--
-    'userImg' => asset('images/templates/user_icon.png'), // TODO: セッションからユーザー情報を取得する
-    'userName' => '仮のアカウント名', // TODO: セッションからユーザー情報を取得する
-
-    'userImg' => session('userImg', asset('images/templates/user_icon.png')),
-    'userName' => session('userName', 'デフォルトのアカウント名'),
-  --}}
 
   <div class="container mx-auto">
     <div class="container mx-auto px-4 lg:px-16">
@@ -75,7 +56,7 @@
         @foreach ($articles as $article)
           <div class="relative block">
             <!-- サムネイル画像とタイトル -->
-            <a href="/article/detail/{{ $article['article_id'] }}" class="group block">
+            <a href="/article/{{ $article['article_id'] }}/detail" class="group block">
               <div class="aspect-h-9 aspect-w-16 relative overflow-hidden bg-gray-200">
                 <img src="{{ $article['article_thumbnail_path'] ?: asset('images/templates/no_image.png') }}"
                   alt="Thumbnail"
