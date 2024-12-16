@@ -18,7 +18,12 @@ export function initializeHeader() {
 	// 非公開保存ボタンのクリックイベントを設定
 	if (savePrivateButton) {
 		savePrivateButton.addEventListener("click", () => {
-			sendSaveRequest(articleId, false, tempImages); // 非公開フラグで保存リクエストを送信
+			// 非公開フラグで保存リクエストを送信
+			sendSaveRequest(articleId, false, tempImages).then((success) => {
+				if (success) {
+					window.location.href = `/article/${articleId}/detail`;
+				}
+			});
 		});
 	} else {
 		console.warn("#save-private-button が見つかりません"); // ボタンが見つからない場合の警告
@@ -27,7 +32,12 @@ export function initializeHeader() {
 	// 公開保存ボタンのクリックイベントを設定
 	if (savePublicButton) {
 		savePublicButton.addEventListener("click", () => {
-			sendSaveRequest(articleId, true, tempImages); // 公開フラグで保存リクエストを送信
+			// 公開フラグで保存リクエストを送信
+			sendSaveRequest(articleId, true, tempImages).then((success) => {
+				if (success) {
+					window.location.href = `/article/${articleId}/detail`;
+				}
+			});
 		});
 	} else {
 		console.warn("#save-public-button が見つかりません"); // ボタンが見つからない場合の警告
@@ -39,6 +49,7 @@ export function initializeHeader() {
  * @param {string} articleId - 記事 ID
  * @param {boolean} isPublic - 公開フラグ (true: 公開, false: 非公開)
  * @param {Array} tempImages - 一時画像の配列
+ * @returns {Promise<boolean>} - 保存成功で `true`、失敗で `false`
  */
 function sendSaveRequest(articleId, isPublic, tempImages) {
 	// 保存に必要なデータの収集
@@ -61,12 +72,12 @@ function sendSaveRequest(articleId, isPublic, tempImages) {
 	// バリデーションチェック
 	if (!title) {
 		alert("記事タイトルを入力してください。");
-		return;
+		return Promise.resolve(false);
 	}
 
 	if (!body) {
 		alert("記事本文を入力してください。");
-		return;
+		return Promise.resolve(false);
 	}
 
 	// 保存データをFormDataにまとめる
@@ -96,13 +107,13 @@ function sendSaveRequest(articleId, isPublic, tempImages) {
 		alert(
 			"保存処理に必要なセキュリティ情報が見つかりません。ページを再読み込みしてください。",
 		);
-		return;
+		return Promise.resolve(false);
 	}
 
 	const csrfToken = csrfTokenMeta.getAttribute("content"); // トークンの内容を取得
 
 	// 保存リクエストの送信
-	fetch(uploadUrl, {
+	return fetch(uploadUrl, {
 		method: "POST",
 		headers: {
 			"X-CSRF-TOKEN": csrfToken, // CSRFトークンをヘッダーに追加
@@ -120,15 +131,17 @@ function sendSaveRequest(articleId, isPublic, tempImages) {
 				);
 			}
 
-			return response.json();
+			return true;
 		})
-		.then((data) => {
+		.then(() => {
 			alert("記事が保存されました。");
+			return true;
 		})
 		.catch((error) => {
 			// リクエスト失敗時のエラーハンドリング
 			console.error("保存エラー:", error);
 			alert("保存に失敗しました。");
+			return false;
 		});
 }
 
@@ -169,8 +182,13 @@ function initializeCloseHandler(isNewArticle, articleId, tempImages) {
 
 	// 下書き保存ボタンの処理
 	saveDraftButton.addEventListener("click", () => {
-		sendSaveRequest(articleId, false, tempImages); // 非公開保存
-		modal.classList.add("hidden");
+		// 非公開フラグで保存リクエストを送信
+		sendSaveRequest(articleId, false, tempImages).then((success) => {
+			if (success) {
+				window.location.href = `/article/${articleId}/detail`;
+				modal.classList.add("hidden");
+			}
+		});
 	});
 
 	// 閉じる確認ボタンの処理
