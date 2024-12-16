@@ -47,7 +47,8 @@
     <!-- 作成者情報 -->
     <div class="my-4 flex items-center gap-4">
       <!-- 作成者アイコン -->
-      <img src="{{ $article['user_img'] }}" alt="作成者アイコン" class="h-12 w-12 rounded-full shadow">
+      <img src="{{ $article['user_img'] ?: asset('images/templates/user_icon.png') }}" alt="作成者アイコン"
+        class="h-12 w-12 rounded-full shadow">
       <div>
         <!-- 作成者ネーム -->
         <p class="text-lg font-semibold text-gray-700">
@@ -76,7 +77,7 @@
     <hr class="mt-8">
 
     <!-- 本文 -->
-    <div class="prose mb-24 mt-4 max-w-none">
+    <div class="prose editor-preview mb-24 mt-4 max-w-none">
       {!! $article['parsed_body'] !!} <!-- MarkdownをHTMLに変換して出力 -->
     </div>
 
