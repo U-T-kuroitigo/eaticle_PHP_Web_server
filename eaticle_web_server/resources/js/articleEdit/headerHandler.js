@@ -132,6 +132,12 @@ function sendSaveRequest(articleId, isPublic, tempImages) {
 		});
 }
 
+/**
+ * 記事編集ページの閉じるボタンとモーダルの動作を初期化する
+ * @param {boolean} isNewArticle - 新規記事かどうか (true: 新規記事, false: 既存記事)
+ * @param {string} articleId - 記事 ID
+ * @param {Array} tempImages - 一時画像の配列
+ */
 function initializeCloseHandler(isNewArticle, articleId, tempImages) {
 	const closeButton = document.getElementById("close-button");
 	const modal = document.getElementById("close-modal");
