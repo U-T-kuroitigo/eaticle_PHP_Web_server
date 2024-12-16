@@ -31,7 +31,6 @@ export function initializeEditor() {
 			"ordered-list", // 番号付きリスト
 			"horizontal-rule", // 水平線
 			"table", // 表
-			"code", // コードブロック
 			"|",
 			"link", // リンク
 			"image", // 画像挿入
