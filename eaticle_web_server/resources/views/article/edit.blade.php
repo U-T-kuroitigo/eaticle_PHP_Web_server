@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 
 <head>
   <meta charset="UTF-8">
@@ -19,11 +19,17 @@
 <body class="bg-gray-100">
   <div class="container mx-auto my-4">
     <!-- ヘッダー -->
+    <script>
+      const articleId = "{{ $article['article_id'] }}";
+      const isNewArticle = articleId === "{{ session('new_article_id', '') }}";
+    </script>
     <header class="flex items-center justify-between bg-gray-100 px-4 py-4">
       <!-- 左側ボタン -->
       <button id="close-button" class="rounded bg-gray-300 px-4 py-2 text-black">
         閉じる
       </button>
+      {{-- モーダル読み込み --}}
+      @include('components.article_close')
 
       <!-- 右側ボタン -->
       <div class="flex items-center gap-2">

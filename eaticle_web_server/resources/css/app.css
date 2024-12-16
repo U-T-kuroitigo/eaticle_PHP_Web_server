@@ -13,3 +13,44 @@
 .editor-preview-side * {
 	all: revert;
 }
+
+.editor-preview table {
+	border-collapse: collapse; /* 枠線を隣接するセルと共有 */
+	width: 100%; /* 全幅に対応 */
+	border: 1px solid #d1d5db; /* 枠線の色: Tailwind gray-300 相当 */
+}
+
+.editor-preview th,
+.editor-preview td {
+	border: 1px solid #d1d5db; /* セル間の枠線 */
+	padding: 0.5rem; /* セルの余白 */
+	text-align: left; /* 左揃え */
+}
+
+.editor-preview th {
+	background-color: #f3f4f6; /* 背景色: Tailwind gray-100 相当 */
+	font-weight: bold; /* 見出しを太字に */
+}
+
+.editor-preview td {
+	background-color: #ffffff; /* 背景色: 白 */
+}
+
+.editor-preview pre {
+	background-color: #f9f9f9; /* 背景色: 明るい灰色 */
+	border: 1px solid #d1d5db; /* 枠線 */
+	border-radius: 0.375rem; /* 角丸 */
+	padding: 1rem; /* 内側の余白 */
+	overflow-x: auto; /* 横スクロール対応 */
+	font-family: "Courier New", Courier, monospace; /* 等幅フォント */
+	font-size: 0.875rem; /* フォントサイズ */
+	line-height: 1.5; /* 行間 */
+}
+
+.editor-preview code {
+	background-color: #f3f4f6; /* 背景色: Tailwind gray-100 相当 */
+	border-radius: 0.25rem; /* 角丸 */
+	padding: 0.25rem 0.5rem; /* 内側の余白 */
+	font-family: "Courier New", Courier, monospace; /* 等幅フォント */
+	font-size: 0.875rem; /* フォントサイズ */
+}
