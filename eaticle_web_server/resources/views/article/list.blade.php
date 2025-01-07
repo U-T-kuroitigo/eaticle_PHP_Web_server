@@ -79,7 +79,7 @@
 
               <!-- 作成日時 -->
               <span class="whitespace-nowrap text-sm text-gray-500">
-                {{ \Carbon\Carbon::parse($article['created_at'])->format('Y年n月j日 G:i') }}
+                {{ formatDate($article['created_at']) }}
               </span>
             </div>
           </div>

@@ -56,7 +56,7 @@
         </p>
         <!-- 作成日時 -->
         <p class="text-sm text-gray-500">
-          {{ \Carbon\Carbon::parse($article['created_at'])->format('Y年n月j日 G:i') }}
+          {{ formatDate($article['created_at']) }}
         </p>
       </div>
     </div>
