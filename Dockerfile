@@ -46,4 +46,6 @@ CMD ["/usr/local/bin/start.sh"]
 
 RUN npm install -D tailwindcss postcss autoprefixer
 
+# Tailwind CSSとアセットをビルド
 RUN npx tailwindcss init -p
+RUN npm run build
