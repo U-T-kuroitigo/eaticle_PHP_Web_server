@@ -1,4 +1,4 @@
-@vite(['resources/js/loginModal.js'])
+@vite(['resources/js/loginModal.js'], true)
 
 <!-- モーダル（ポップアップ） -->
 <div id="login-modal" class="modal fixed inset-0 z-50 flex hidden items-center justify-center bg-black bg-opacity-50">
