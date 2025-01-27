@@ -11,7 +11,7 @@
     content="{{ isset($pagination['has_more']) && $pagination['has_more'] ? 'true' : 'false' }}" />
 
   <title>記事一覧</title>
-  @vite(['resources/css/app.css', 'resources/js/app.js', 'resources/js/articleList.js'])
+  @vite(['resources/css/app.css', 'resources/js/app.js', 'resources/js/articleList.js'], true) <!-- trueを指定するとHTTPSが確実に使われる -->
 </head>
 
 <body>
