@@ -1,4 +1,4 @@
-@vite(['resources/js/userDropdown.js'], true)
+@vite(['resources/js/userDropdown.js'])
 
 <div id="dropdown-menu" class="absolute right-0 mt-2 hidden w-32 rounded-md bg-white shadow-lg">
   <a href="/user-page/{{ $eaticleId }}/article"
