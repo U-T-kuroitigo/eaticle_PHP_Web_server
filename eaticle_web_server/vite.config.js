@@ -13,6 +13,12 @@ export default defineConfig({
 			refresh: true,
 		}),
 	],
+	server: {
+		https: true, // HTTPS対応
+		hmr: {
+			host: "eaticle-php-web-server.onrender.com", // ホスト名を指定
+		},
+	},
 	build: {
 		outDir: "public/build", // ビルド先ディレクトリ
 		assetsDir: "", // アセットは直接build配下に配置
