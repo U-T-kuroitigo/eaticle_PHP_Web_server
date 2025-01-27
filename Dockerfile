@@ -28,6 +28,12 @@ RUN npm install
 # Viteでアセットをビルド
 RUN npm run build
 
+RUN npm install -D tailwindcss postcss autoprefixer
+
+# Tailwind CSSとアセットをビルド
+RUN npx tailwindcss init -p
+RUN npm run build
+
 # 権限の設定
 RUN chown -R www-data:www-data /var/www/eaticle_web_server/storage /var/www/eaticle_web_server/bootstrap/cache
 
@@ -43,9 +49,3 @@ COPY ./nginx.conf /etc/nginx/conf.d/default.conf
 
 # NginxとPHP-FPMを起動
 CMD ["/usr/local/bin/start.sh"]
-
-RUN npm install -D tailwindcss postcss autoprefixer
-
-# Tailwind CSSとアセットをビルド
-RUN npx tailwindcss init -p
-RUN npm run build

@@ -13,4 +13,8 @@ export default defineConfig({
 			refresh: true,
 		}),
 	],
+	build: {
+		outDir: "public/build", // ビルド先ディレクトリ
+		assetsDir: "", // アセットは直接build配下に配置
+	},
 });
