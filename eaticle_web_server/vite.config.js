@@ -13,15 +13,16 @@ export default defineConfig({
 			refresh: true,
 		}),
 	],
-	server: {
-		https: true, // HTTPS対応
-		hmr: {
-			host: "eaticle-php-web-server.onrender.com", // ホスト名を指定
-		},
-		origin: "https://eaticle-php-web-server.onrender.com",
-	},
 	build: {
 		outDir: "public/build", // ビルド先ディレクトリ
 		assetsDir: "", // アセットは直接build配下に配置
+		manifest: true, // LaravelがアセットのURLを正しく認識するために必要
+		rollupOptions: {
+			output: {
+				entryFileNames: "assets/[name]-[hash].js",
+				chunkFileNames: "assets/[name]-[hash].js",
+				assetFileNames: "assets/[name]-[hash].[ext]",
+			},
+		},
 	},
 });
