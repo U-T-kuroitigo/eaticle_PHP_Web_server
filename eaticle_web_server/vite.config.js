@@ -18,6 +18,7 @@ export default defineConfig({
 		hmr: {
 			host: "eaticle-php-web-server.onrender.com", // ホスト名を指定
 		},
+		origin: "https://eaticle-php-web-server.onrender.com",
 	},
 	build: {
 		outDir: "public/build", // ビルド先ディレクトリ
